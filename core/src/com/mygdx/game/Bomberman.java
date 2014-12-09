@@ -7,12 +7,14 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.InputProcessor;
+import com.mygdx.game.model.Asearch;
 import com.mygdx.game.model.MovingObject;
 import com.mygdx.game.model.World;
 
 public class Bomberman extends ApplicationAdapter implements InputProcessor {
 	private World world;
 	private WorldRenderer renderer;
+	private Asearch asearch;
 	
 	@Override
 	public void create () {
@@ -72,16 +74,22 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
 	
 	@Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if ( button == Buttons.LEFT)
-		{
-			  if(world.player.position.x - screenX > 0) world.player.position.x-=5;
-	          if(world.player.position.x - screenX < 0) world.player.position.x+=5;	          
-	          if(world.player.position.y - 416 + world.player.position.y > 0) world.player.position.y-=5;
-	          if(world.player.position.y - 416 + world.player.position.y < 0) world.player.position.y+=5;
-		}
-
-		
-        return false;
+			  asearch = new Asearch(world.map, (int) world.player.position.x/32, (int) world.player.position.y/32, (int) screenX/32, (int) screenY/32);
+					
+					if (asearch.resultList[0].getX- asearch.start.getX()  == 1 ){
+						world.player.state = MovingObject.State.MOVING_RIGHT;
+					}
+					else if (resultList[0].getX() - start.getX()  == -1 ){
+						world.player.state = MovingObject.State.MOVING_LEFT;
+					}
+					else if (resultList[0].getY() - start.getY()  == 1 ){
+						world.player.state = MovingObject.State.MOVING_UP;
+					}
+					else if (resultList[0].getY() - start.getY()  == -1 ){
+						world.player.state = MovingObject.State.MOVING_DOWN;
+					}
+					else break; 	
+        return true;
     }
 
 //	@Override
