@@ -70,7 +70,7 @@ public class Asearch {
             }
                 
             closeList.add(openList.remove(0));
-            //开启列表中排序，把F值最低的放到最底端?
+            //开启列表中排序，把F值最低的放到最底端
             Collections.sort(openList, new NodeFComparator());
         }
         if(isFind){
@@ -90,9 +90,10 @@ public class Asearch {
         if(isListContains(closeList, x, y)!=-1){
             return false;
         }
+        //查找开启列表中是否存在
         int index=-1;
         if((index=isListContains(openList, x, y))!=-1){
-            //G值是否更小，即是否更新G，F值?
+            //G值是否更小，即是否更新G，F值
             if((parentNode.getG()+cost)<openList.get(index).getG()){
                 node.setParentNode(parentNode);
                 countG(node, cost);
@@ -100,6 +101,7 @@ public class Asearch {
                 openList.set(index, node);
             }
         }else{
+            //添加到开启列表中
             node.setParentNode(parentNode);
             count(node, end, cost);
             openList.add(node);
@@ -107,6 +109,7 @@ public class Asearch {
         return true;
     }
     
+    //集合中是否包含某个元素(-1：没有找到，否则返回所在的索引)
     private int isListContains(List<Node> list,int x,int y){
         for(int i=0;i<list.size();i++){
             Node node=list.get(i);
@@ -117,6 +120,7 @@ public class Asearch {
         return -1;
     }
     
+    //从终点往返回到起点
     private void getPath(List<Node> resultList,Node node){
     	this.resultList = resultList;
         if(node.getParentNode()!=null){
@@ -125,11 +129,13 @@ public class Asearch {
         resultList.add(node);
     }
     
+    //计算G,H,F值
     private void count(Node node,Node end, int cost){
         countG(node, cost);
         countH(node, end);
         countF(end);
     }
+    //计算G值
     private void countG(Node node,int cost){
         if(node.getParentNode()==null){
             node.setG(cost);
@@ -137,22 +143,25 @@ public class Asearch {
             node.setG(node.getParentNode().getG()+cost);
         }
     }
+    //计算H值
     private void countH(Node node,Node end){
         node.setF(Math.abs(node.getX()-end.getX())+Math.abs(node.getY()-end.getY()));
     }
+    //计算F值
     private void countF(Node node){
         node.setF(node.getG()+node.getF());
     }
     
 }
+//节点类
 class Node{
 
-	private int x;
-    private int y;
-    private Node parentNode;
-    private int g;
-    private int h;
-    private int f;
+	private int x;//X坐标
+    private int y;//Y坐标
+    private Node parentNode;//父类节点
+    private int g;//当前点到起点的移动耗费
+    private int h;//当前点到终点的移动耗费，即曼哈顿距离|x1-x2|+|y1-y2|(忽略障碍物)
+    private int f;//f=g+h
     
     public Node(int x,int y,Node parentNode){
         this.x=x;
