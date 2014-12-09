@@ -1,8 +1,9 @@
 package com.mygdx.game.model;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
+//import com.badlogic.gdx.Gdx;
+//import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
+//import com.badlogic.gdx.math.Vector2;
 
 public class Player extends MovingObject {
 	private Texture[] tex_down = {new Texture("player_down_1.png"), new Texture("player_down_2.png"), new Texture("player_down_3.png")};

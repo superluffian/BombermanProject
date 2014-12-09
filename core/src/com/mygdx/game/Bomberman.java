@@ -1,15 +1,10 @@
 package com.mygdx.game;
 
-import java.util.List;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.InputProcessor;
-import com.mygdx.game.model.Asearch;
 import com.mygdx.game.model.MovingObject;
 import com.mygdx.game.model.World;
 
@@ -62,8 +57,7 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
     	}
         return true;
     }
-    
-
+	
 	@Override
     public boolean keyTyped(char character) {
         return false;
@@ -73,8 +67,13 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
     public boolean mouseMoved(int screenX, int screenY) {
         return false;
     }
+
+//	@Override
+//    public boolean touchDown(int screenX, int screenY, int pointer, int button) {	
+//        return false;
+//    }
 	
-	@Override
+    @Override	
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 			  asearch = new Asearch(world.map, (int) world.player.position.x/32, (int) world.player.position.y/32, (int) screenX/32, (int) screenY/32);
 					
@@ -94,10 +93,6 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
         return true;
     }
 
-//	@Override
-//    public boolean touchDown(int screenX, int screenY, int pointer, int button) {	
-//        return false;
-//    }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {

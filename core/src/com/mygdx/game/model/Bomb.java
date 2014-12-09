@@ -30,7 +30,7 @@ public class Bomb {
 					if(pos.y+i>world.mapWidth-1){
 						firePos1.y=world.mapWidth-1;
 					}
-					if(world.map[(int) firePos1.x][(int) firePos1.y]==1||world.map[(int) firePos1.x][(int) firePos1.y]==0){
+					if(world.map[(int) firePos1.x][(int) firePos1.y]!=2){
 						world.map[(int) firePos1.x][(int) firePos1.y]=0;
 						world.fires.add(new Fire(firePos1.x, firePos1.y));
 					}
@@ -45,7 +45,7 @@ public class Bomb {
 					if(pos.y-i<0){
 						firePos2.y=0;
 					}
-					if(world.map[(int) firePos2.x][(int) firePos2.y]==1||world.map[(int) firePos2.x][(int) firePos2.y]==0){
+					if(world.map[(int) firePos2.x][(int) firePos2.y]!=2){
 						world.map[(int) firePos2.x][(int) firePos2.y]=0;
 						world.fires.add(new Fire(firePos2.x, firePos2.y));
 					}
@@ -58,7 +58,7 @@ public class Bomb {
 					if(pos.x+i>world.mapWidth-1){
 						firePos3.x=world.mapWidth-1;
 					}
-					if(world.map[(int) firePos3.x][(int) firePos3.y]==1||world.map[(int) firePos3.x][(int) firePos3.y]==0){
+					if(world.map[(int) firePos3.x][(int) firePos3.y]!=2){
 						world.map[(int) firePos3.x][(int) firePos3.y]=0;
 						world.fires.add(new Fire(firePos3.x, firePos3.y));
 					}
@@ -68,10 +68,10 @@ public class Bomb {
 				}
 				for(int i=0;i<3;i++){
 					Vector2 firePos4=new Vector2(pos.x-i, pos.y);
-					if(pos.y-i<0){
-						firePos4.y=0;
+					if(pos.x-i<0){
+						firePos4.x=0;
 					}
-					if(world.map[(int) firePos4.x][(int) firePos4.y]==1||world.map[(int) firePos4.x][(int) firePos4.y]==0){
+					if(world.map[(int) firePos4.x][(int) firePos4.y]!=2){
 						world.map[(int) firePos4.x][(int) firePos4.y]=0;
 						world.fires.add(new Fire(firePos4.x, firePos4.y));
 					}

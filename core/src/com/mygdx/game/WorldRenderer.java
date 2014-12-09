@@ -37,7 +37,9 @@ public class WorldRenderer {
 		batch.begin();
 		drawMap();
 		batch.draw(world.player.getFrame(), world.player.position.x, world.player.position.y);
-		
+		for(int i=0;i<world.monsters.size;i++){
+			batch.draw(world.monsters.get(i).getFrame(), world.monsters.get(i).position.x, world.monsters.get(i).position.y);
+		}
 		renderBomb();
 		renderFire();
 		batch.end();
@@ -58,8 +60,8 @@ public class WorldRenderer {
 			if(fire.state==Fire.EXPLODE){
 				TextureRegion frame=this.tex_fire.getKeyFrame(fire.explodeTime, false);
 				batch.draw(frame, 32*fire.pos.x, 32*fire.pos.y, 32, 32);
-				System.out.println(fire.pos.x);
-				System.out.println(fire.pos.y);
+				//System.out.println(fire.pos.x);
+				//System.out.println(fire.pos.y);
 			}
 		}
 	}
