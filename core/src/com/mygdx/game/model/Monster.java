@@ -43,7 +43,7 @@ public class Monster extends MovingObject{
 		}
 	}
 	public void directionUpdate(float deltaTime){
-		if(directionTimer>0.01f){
+		if(directionTimer>0.1f){
 			double dir=Math.random();
 			if(dir<0.25f){
 				state=State.MOVING_DOWN;

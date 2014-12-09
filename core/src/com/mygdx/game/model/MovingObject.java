@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 public class MovingObject {
 	public enum State {STAND, MOVING_LEFT, MOVING_RIGHT, MOVING_UP, MOVING_DOWN, DEAD};
 	public World world;
-	public float speed = 500f;
+	public float speed = 50f;
 	public Vector2 position = new Vector2();
 	public Vector2 velocity = new Vector2(0, 0);
 	public State state = State.STAND;
