@@ -31,12 +31,13 @@ public class Asearch {
             openList = new ArrayList<Node>();
 	        closeList = new ArrayList<Node>();
 	    }
-	
+    
+	//查找坐标（-1：错误，0：没找到，1：找到了）
     public int search(int x1,int y1,int x2,int y2){
         if(x1<0||x1>=row||x2<0||x2>=row||y1<0||y1>=column||y2<0||y2>=column){
             return -1;
         }
-        if(map[x1][y1]==0||map[x2][y2]==0){
+        if(map[x1][y1]!=0||map[x2][y2]!=0){
             return -1;
         }
         openList.add(start);
@@ -54,7 +55,9 @@ public class Asearch {
         boolean isFind=false;      
         Node node=null;
         while(openList.size()>0){
+            //取出开启列表中最低F值，即第一个存储的值的F为最低的
             node=openList.get(0);
+            //判断是否找到目标点
             if(node.getX()==end.getX()&&node.getY()==end.getY()){
                 isFind=true;
                 break;
@@ -71,7 +74,9 @@ public class Asearch {
             if((node.getX()+1)<row){
                 checkPath(node.getX()+1,node.getY(),node, end, COST);
             }    
+            //从开启列表中删除 添加到关闭列表中
             closeList.add(openList.remove(0));
+            //开启列表中排序，把F值最低的放到最底端
             Collections.sort(openList, new NodeFComparator());
         }
         if(isFind){

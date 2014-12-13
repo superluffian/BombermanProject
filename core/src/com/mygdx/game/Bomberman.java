@@ -16,6 +16,9 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
 	private World world;
 	private WorldRenderer renderer;
 	private Asearch asearch;
+	public float touchX;
+	public float touchY;
+	
 	
 	@Override
 	public void create () {
@@ -31,10 +34,50 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderer.render();
 		
-//	      if(Gdx.input.isTouched()) {
+//每点击一次更新目标touch，不点击目标不变	
+//		if(Gdx.input.isTouched()) {
 //	        Vector2 touchPos = new Vector2();
-//	        touchPos.set(Gdx.input.getX(), Gdx.input.getY());	          
-//	      	asearch = new Asearch(world.map, (int) world.player.position.x/32, (int) world.player.position.y/32, (int) touchPos.x/32, (int) (416 - touchPos.y)/32);
+//	        touchPos.set(Gdx.input.getX(), Gdx.input.getY());
+//	        touchX = touchPos.x;
+//	        touchY = touchPos.y; 
+//	      }
+
+//	 只在点击的时候搜更新方向一次 = = 
+//		if(Gdx.input.isTouched()) {
+//		        Vector2 touchPos = new Vector2();
+//		        touchPos.set(Gdx.input.getX(), Gdx.input.getY());
+//		        touchX = touchPos.x;
+//		        touchY = touchPos.y;
+//	    	    System.out.println("px = " + world.player.position.x + ", py =" + world.player.position.y);
+//	    	    System.out.println("Tx = " + touchPos.x + ", Ty =" + touchPos.y);
+//	      	    asearch = new Asearch(world.map, (int) world.player.position.x/32, (int) world.player.position.y/32, (int) touchX/32, (int) (416 - touchY)/32);
+//			    int flag = asearch.search(asearch.start.getX(), asearch.start.getY(), asearch.end.getX(), asearch.end.getY());
+//	    	    if (flag == 1){
+//				if (asearch.resultList.get(1).getX()- asearch.start.getX()  == 1 ){
+//					world.player.state = MovingObject.State.MOVING_RIGHT;
+//				}
+//				else if (asearch.resultList.get(1).getX() - asearch.start.getX()  == -1 ){
+//					world.player.state = MovingObject.State.MOVING_LEFT;
+//				}
+//				else if (asearch.resultList.get(1).getY() - asearch.start.getY()  == 1 ){
+//					world.player.state = MovingObject.State.MOVING_UP;
+//				}
+//				else if (asearch.resultList.get(1).getY() - asearch.start.getY()  == -1 ){
+//					world.player.state = MovingObject.State.MOVING_DOWN;				
+//				}
+//				else world.player.state = MovingObject.State.STAND;
+//	    	    }
+//	    	    else world.player.state = MovingObject.State.STAND;
+//
+//	    	    System.out.println("sx = " + asearch.start.getX() + " sy =" + asearch.start.getY());
+//			    System.out.println("ex = " + asearch.end.getX() + " ey =" + asearch.end.getY());
+//			    System.out.println("X1 = " + asearch.resultList.get(1).getX() + " Y1 =" + asearch.resultList.get(1).getY());        
+//		       }
+
+
+
+		
+//	      	asearch = new Asearch(world.map, (int) world.player.position.x/32, (int) world.player.position.y/32, (int) touchX/32, (int) (416 - touchY)/32);
 //		    int flag = asearch.search(asearch.start.getX(), asearch.start.getY(), asearch.end.getX(), asearch.end.getY());
 //    	    if (flag == 1){
 //			if (asearch.resultList.get(1).getX()- asearch.start.getX()  == 1 ){
@@ -57,9 +100,8 @@ public class Bomberman extends ApplicationAdapter implements InputProcessor {
 //		    System.out.println("ex = " + asearch.end.getX() + " ey =" + asearch.end.getY());
 //		    System.out.println("X1 = " + asearch.resultList.get(1).getX() + " Y1 =" + asearch.resultList.get(1).getY());        
 //	       }
-	}
 	
-
+	}
 
 	
 	@Override

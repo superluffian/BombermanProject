@@ -74,9 +74,7 @@ public class World {
 		
 		for(int i=0;i<monsters.size;i++){
 			checkCollision(monsters.get(i));
-//			monsters.get(i).directionUpdate(delta, (int) player.position.x/32 ,(int) player.position.y/32, (int) monsters.position.x(i)/32,(int) monsters.position.y(i)/32);
-			monsters.get(i).directionUpdate(delta, (int) player.position.x/32 ,(int) player.position.y/32, 5, 5);
-
+			monsters.get(i).directionUpdate(delta, (int) player.position.x/32 ,(int) player.position.y/32, (int) monsters.position.x(i)/32,(int) monsters.position.y(i)/32);
 			monsters.get(i).update(delta);
 		}
 		//monster.directionUpdate(delta);

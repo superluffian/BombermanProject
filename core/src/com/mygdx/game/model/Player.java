@@ -3,6 +3,10 @@ package com.mygdx.game.model;
 //import com.badlogic.gdx.Gdx;
 //import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
+import search.Asearch;
+import com.mygdx.game.Bomberman;
+
+
 //import com.badlogic.gdx.math.Vector2;
 
 public class Player extends MovingObject {
@@ -15,6 +19,8 @@ public class Player extends MovingObject {
 	public Player(World world, float x, float y) {
 		super(world, x, y);
 	}
+	
+
 	
 	public Texture getFrame() {
 		Texture[] textures = null;

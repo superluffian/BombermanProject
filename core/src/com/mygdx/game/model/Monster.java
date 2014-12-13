@@ -46,8 +46,8 @@ public class Monster extends MovingObject{
 		}
 	}
 	public void directionUpdate(float deltaTime, int playerX, int playerY, int monsterX, int monsterY){
-//		if(directionTimer>0.1f){			
-	      	asearch = new Asearch(world.map, playerX,  playerY, monsterX, monsterY);
+	
+	      	asearch = new Asearch(world.map, playerX, playerY, monsterX, monsterY);
 		    int flag = asearch.search(asearch.start.getX(), asearch.start.getY(), asearch.end.getX(), asearch.end.getY());
     	    if (flag == 1){
 				if (asearch.resultList.get(1).getX() - asearch.start.getX() == 1 ){
@@ -62,31 +62,13 @@ public class Monster extends MovingObject{
 					state=State.MOVING_UP;
 					direction=state;
 				}
-//				else if (asearch.resultList.get(1).getY() - asearch.start.getY()  == -1 ){
-				else{
-					state=State.MOVING_DOWN;
-					direction=state;				
+				else if (asearch.resultList.get(1).getY() - asearch.start.getY()  == -1 ){
+					world.player.state = MovingObject.State.MOVING_DOWN;					
 				}
-    	    }
-			else {
-					double dir=Math.random();
-					if(dir<0.25f){
-						state=State.MOVING_DOWN;
-						direction=state;
-					}
-					else if(dir<0.5f){
-						state=State.MOVING_LEFT;
-						direction=state;
-					}
-					else if (dir<0.75f){
-						state=State.MOVING_RIGHT;
-						direction=state;
-					}
-					else{
-						state=State.MOVING_UP;
-						direction=state;
-					}
-				}
+				else world.player.state = MovingObject.State.STAND;
+	    	    }
+	    	    else world.player.state = MovingObject.State.STAND;
+			}
     	    
 //			double dir=Math.random();
 //			if(dir<0.25f){
