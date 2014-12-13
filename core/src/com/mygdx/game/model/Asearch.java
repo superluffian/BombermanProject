@@ -19,7 +19,7 @@ public class Asearch {
     private int row;
     private int column;
 	
-	
+	//
 
 	public Asearch(int[][]map, int playerX, int playerY, int aimX, int aimY){
 	        this.map = map;
