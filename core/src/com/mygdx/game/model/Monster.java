@@ -93,4 +93,3 @@ public class Monster extends MovingObject{
 //			directionTimer=directionTimer+deltaTime;
 //		}
 	}
-}
